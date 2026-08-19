@@ -9,6 +9,9 @@ Welcome to your test page! Use this file to test out your workflow, try editing,
 - [ ] **Bold text** test (`**bold text**`)
 - [ ] *Italic text* test (`*italic text*`)
 - [ ] `Inline code` test (`` `code` ``)
+- [ ] hello world
+- [ ] *bitch*
+- [ ] 
 
 ---
 
