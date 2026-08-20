@@ -24,10 +24,51 @@ if prompted to sign in click TOKEN and paste PAT
 
 
 when done
-go to https://github.com/xmocxd/wiki-onboarding/compare/(your branch name), 
+go to https://github.com/xmocxd/wiki-onboarding/compare/(your branch name), ---- also if you just go to the main repo page, you should see a banner prompting you to create a pull request
 click create pull request
 (optional type a description of changes)
 click create pull request again on this page
+
+-----------
+editing directly on github
+
+make sure you are editing on MAIN branch (should be default when opening the repo URL -- also says at top of screen in editor)
+switch between edit and preview --- note -- things like ctrl+b for bolding text still work within the markdown code editor on github
+click commit changes.. button when done (or hit ctrl+S)
+click "Create a new branch for this commit and start a pull request" --- any branch name is fine
+
+GitHub Markdown Editor Hotkeys
+==============================
+
+--- Text Styling ---
+Bold:
+  Windows/Linux: Ctrl + B
+  Mac:           Cmd + B
+Italic:
+  Windows/Linux: Ctrl + I
+  Mac:           Cmd + I
+Inline Code:
+  Windows/Linux: Ctrl + E
+  Mac:           Cmd + E
+Link:
+  Windows/Linux: Ctrl + K
+  Mac:           Cmd + K
+
+--- Lists & Quotes ---
+Ordered List:
+  Windows/Linux: Ctrl + Shift + 7
+  Mac:           Cmd + Shift + 7
+Unordered List:
+  Windows/Linux: Ctrl + Shift + 8
+  Mac:           Cmd + Shift + 8
+Blockquote:
+  Windows/Linux: Ctrl + Shift + .
+  Mac:           Cmd + Shift + .
+
+--- Workflow & Editor ---
+Toggle Write/Preview:
+  Windows/Linux: Ctrl + Shift + P
+  Mac:           Cmd + Shift + P
 
 
 
