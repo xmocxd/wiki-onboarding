@@ -36,6 +36,7 @@ make sure you are editing on MAIN branch (should be default when opening the rep
 switch between edit and preview --- note -- things like ctrl+b for bolding text still work within the markdown code editor on github
 click commit changes.. button when done (or hit ctrl+S)
 click "Create a new branch for this commit and start a pull request" --- any branch name is fine
+optionally add description, click create PR
 
 GitHub Markdown Editor Hotkeys
 ==============================
