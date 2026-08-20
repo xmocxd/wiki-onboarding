@@ -1,5 +1,38 @@
 # Wiki Onboarding Guide
 
+
+
+
+TO ADD
+
+create a github account
+create a PAT -- copy it ----- 
+
+install git -- default settings
+install git plugin
+
+terminal
+git config --global user.name "your name"
+git config --global user.email "your-email@whatever.com"
+git config --global push.default upstream
+
+command pallette - git clone -- enter url -- enter 'wiki' for folder -- depth blank
+com pal -- git switch to remote branch -- select origin - select origin/main
+com pal -- create new branch -- your name /date
+click commit and sync -- type the name of your branch again if prompted (will prompt you 1 time per branch created)
+if prompted to sign in click TOKEN and paste PAT
+
+
+when done
+go to https://github.com/xmocxd/wiki-onboarding/compare/(your branch name), 
+click create pull request
+(optional type a description of changes)
+click create pull request again on this page
+
+
+
+
+
 ## What is Markdown?
 
 Markdown is a lightweight way to format text using plain characters. Instead of clicking a "Bold" button, you type `**bold**`. Instead of inserting a heading from a menu, you type `# My Heading`.
