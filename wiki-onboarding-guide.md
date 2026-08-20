@@ -39,7 +39,7 @@ git --version
 If you see a version number (e.g. `git version 2.39.0`), you are ready. If you see an error or a prompt to install Xcode Command Line Tools, click **Install** and wait for it to finish.
 
 **Windows:**  
-Git is usually not installed by default. Download and run the installer from [git-scm.com/downloads](https://git-scm.com/downloads).
+Git is usually not installed by default. Download and run the installer from [git-scm.com/downloads](https://git-scm.com/downloads). (USE ALL DEFAULT)
 
  After installing, you do not need to open Git again — Obsidian will use it automatically.
 
@@ -51,7 +51,9 @@ You need this token to authenticate with GitHub.
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens)
 2. Click **Generate new token → Generate new token (classic)**
-5. Under **Select scopes**, check the box next to **repo** (this covers all permissions needed)
+3. Under **Select scopes**, check the box next to **repo** (this covers all permissions needed)
+4. Add a note (required) -- can be anything
+5. Select NO EXPIRATION or the maximum allowed expiration
 6. Scroll down and click **Generate token**
 7. **Copy the token now** — GitHub only shows it once. Paste it into a text file or password manager temporarily.
 
@@ -71,29 +73,19 @@ You need this token to authenticate with GitHub.
 1. In Obsidian, open **Settings** (gear icon, bottom-left)
 2. Go to **Community plugins**
 4. Click **Browse**
-5. Search for `Obsidian Git`
-6. Click the result by **Vinzent03**, then click **Install**, then **Enable**
+5. Search for `Git`
+6. Click **Git** by **Vinzent**, then click **Install**, then **Enable**
 
 ---
 
 ### Step 5 — Install the obsidian-github-tools plugin
 
 1. In the same **Community plugins → Browse** screen, search for `GitHub Tools`
-2. Click the result by **kwhittle**, then click **Install**, then **Enable**
+2. Click **Github Repo Tools** by **kwhittle**, then click **Install**, then **Enable**
 
 ---
 
-### Step 6 — Authenticate Obsidian Git with GitHub
-
-1. In Obsidian, go to **Settings → Community plugins**, find **Git**, and click its gear icon
-2. Scroll to the **Authentication/Commit Author** section
-3. Enter your GitHub username in the **Username** field
-4. Paste your Personal Access Token (from Step 2) in the **Password/Token** field
-5. Fill in your name and email in the **Author name** and **Author email** fields (these appear on commits)
-
----
-
-### Step 7 — Clone the repository into Obsidian
+### Step 6 — Clone the repository into Obsidian
 
 1. Open the **Command palette** (press `Ctrl+P` on Windows or `Cmd+P` on Mac)
 2. Type `clone` and select **Obsidian Git: Clone an existing remote repo**
@@ -103,13 +95,18 @@ You need this token to authenticate with GitHub.
 
 After restarting, all the repository files will appear in the left sidebar.
 
+**(CLICK WIKI FOLDER ON LEFT SIDEBAR)**
+
 ---
 
 ### Step 8 — Configure obsidian-github-tools
 
-1. In Obsidian, go to **Settings → Community plugins**, find **GitHub Tools**, and click its gear icon
+1. In Obsidian, go to **Settings → Community plugins**, find **GitHub Tools**, and click its **gear icon (UNDER THE THREE DOTS ICON ON RIGHT)**
 2. In the **Local repo path** field, enter the full path to your vault folder  
    Example: `C:\Users\yourname\Documents\my-project` (Windows) or `/Users/yourname/Documents/my-project` (Mac)  
+   1. **OR CLICK BROWSE**
+   2. **DOCUMENTS -> OBSIDIAN VAULT -> wiki (or whatever project name is)**
+   3. SELECT THE WIKI FOLDER
 3. In the **GitHub personal access token** field, paste your token from Step 2
 
 ---
@@ -127,9 +124,12 @@ Examples: `jane-smith-2026-08-19`, `alex-jones-2026-11-03`
 
 To create the branch:
 
-1. First, make sure you are starting from the latest version of `main`. Open the **Command palette** (`Ctrl+P` / `Cmd+P`), type `checkout`, and select **Obsidian Git: Switch to remote branch** — choose `main` from the list.
+1. First, make sure you are starting from the latest version of `main`. Open the **Command palette** (`Ctrl+P` / `Cmd+P`), type `checkout`, and select **Obsidian Git: Switch to remote branch**
+   1. Select `origin`
+   2. Select `origin/master` from the list.
 2. Open the Command palette again, type `create new branch`, and select **Obsidian Git: Create new branch**
 3. Type your branch name in the format above (e.g. `jane-smith-2026-08-19`) and press Enter
+   1. **NOTE -- IT WILL NOT SAY ANYTHING, JUST TYPE THE NAME AFTER SELECTING THE COMMAND**
 
 The branch name now appears in the bottom status bar of Obsidian. You are ready to work.
 
@@ -144,7 +144,7 @@ Use the left sidebar to navigate files. Click any `.md` file to open it.
 - **Live Preview** (default): shows formatted output as you type, like a word processor
 - **Source mode**: shows raw Markdown syntax
 
-To toggle, click the book icon in the top-right corner of the editor, or open the Command palette and type `toggle live preview`.
+To toggle, click the THREE DOTS next to the book icon in the top-right corner of the editor, and click SOURCE MODE
 
 ---
 
@@ -154,15 +154,17 @@ Pushing saves your work to GitHub as a cloud backup. You do not need to be finis
 
 To push:
 
-1. Click the **source control icon** in the left ribbon (branch/arrows icon) — this opens the Source Control panel
-2. You will see a list of your changed files
-3. In the **Commit message** box at the top of the panel, type a brief note on what you worked on  
-   Examples: `Draft section 2`, `Work in progress — FAQ page`, `End of day backup`
+1. Click the **source control icon** in the left ribbon (branch/arrows icon) — this opens the Source Control panel --- **GIT SOURCE CONTROL ON FAR LEFT VERTICAL MENU** (TOWARD BOTTOM)
+2. **OPENS A BAR ON THE RIGHT SIDE WITH OPTIONS**
+3. **CLICK THE UP ARROW FOR COMMIT AND SYNC**
+   1. If this is the first time run, it will say **AUTHOR IDENTITY UNKNOWN** and give you some commands to run in the terminal.  run these commands and add your information to git
 4. Click the **Commit-and-sync** button (cloud/upload icon at the top of the panel)
+5. It will prompt you to authenticate with GitHub
+   1. Click Sign In
+   2. Click Use Token
+   3. Paste in your Personal Access Token
 
 Your work is now safely backed up to GitHub on your branch.
-
-> **Shortcut:** There is also a single Git ribbon button at the very top of the left sidebar. Hover over it to confirm the tooltip says "Commit-and-sync", then click it to push with one click using your last commit message.
 
 ---
 
@@ -171,7 +173,8 @@ Your work is now safely backed up to GitHub on your branch.
 When you have finished a section and are ready for it to be reviewed, open a Pull Request (PR). A PR is a request for the maintainer to review your branch and merge it into the main documentation.
 
 1. Make sure you have pushed all your latest changes **(Step 2)**
-2. Click the **GitHub Tools** icon in the left sidebar (the GitHub logo) to open its panel
+2. Click the **GitHub REPO** icon in the left sidebar (the GitHub logo) to open its panel
+   1. **LITTLE CAT ICON ON BOTTOM LEFT**
 3. Click **Create PR**
 4. A modal appears pre-filled with a title based on your branch name — edit the title to briefly describe what this PR contains  
    Examples: `Jane Smith — Add FAQ section`, `Alex Jones — Update installation guide`
