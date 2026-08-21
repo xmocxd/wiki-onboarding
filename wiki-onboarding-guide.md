@@ -1,46 +1,56 @@
 # Wiki Onboarding Guide
 
+This guide outlines 2 different methods to edit documents on the wiki.  These documents are simple markdown files hosted on GitHub that get converted into web pages visible on the live wiki.  To get started quickly, editing online directly on GitHub (method 1) is the absolute simplest way to edit the markdown files, but installing a local editor provides a more powerful ediitng experience for doing a large amount of writing work.
+
+## What is Markdown?
+
+Markdown is a lightweight way to format text using plain characters. Instead of clicking a "Bold" button, you type `**bold**`. Instead of inserting a heading from a menu, you type `# My Heading`.
+
+Markdown files end in `.md` and look like plain text when opened in any editor, but render as formatted documents in Obsidian, GitHub, and most documentation sites.
+
+A quick reference:
+
+```markdown
+# Heading 1
+## Heading 2
+
+**bold text**
+*italic text*
+
+- bullet item
+- another item
+
+[link text](https://example.com)
+
+![image alt text](path/to/image.png)
+```
+
+# Method 1 - Edit Online via GitHub (Basic)
+
+This method is the quickest way to start editing, requiring only a GitHub account and no other setup.  **The main limitation of this method is that you are unable to see the formatted document while editing**, working by editing the text-based code in the markdown file, then switching to a different mode to preview the formatting.
 
 
+## Editing Documents
 
-TO ADD
+To any text on the wiki:
 
-create a github account
-create a PAT -- copy it ----- 
-
-install git -- default settings
-install git plugin
-
-terminal
-git config --global user.name "your name"
-git config --global user.email "your-email@whatever.com"
-git config --global push.default upstream
-
-command pallette - git clone -- enter url -- enter 'wiki' for folder -- depth blank
-com pal -- git switch to remote branch -- select origin - select origin/main
-com pal -- create new branch -- your name /date
-click commit and sync -- type the name of your branch again if prompted (will prompt you 1 time per branch created)
-if prompted to sign in click TOKEN and paste PAT
+1. **Go to `https://github.com/xmocxd/wiki-onboarding/`** (TO ADD REAL URL)
+2. Make sure you are editing on the **MAIN** branch.
+   1. This should be the default branch when opening the repository URL, ---- the current branch is also shown at the top of the editor.
+3. Browse and find the `.md` file you want to edit from the list, click on the file
+4. Use **Edit** and **Preview** buttons to switch between editing the Markdown and viewing the formatted result.
+   - Note: Markdown shortcuts such as `Ctrl+B` for bold text still work within GitHub’s Markdown editor.  *(See below for full list)*
+5. When finished, click **Commit changes...** (or press `Ctrl+S`).
+6. Select **Create a new branch for this commit and start a pull request**.
+7. Enter any branch name you want, or use your name and date. You can optionally add a description.
+8. Click **Create pull request** to submit the changes.
 
 
-when done
-go to https://github.com/xmocxd/wiki-onboarding/compare/(your branch name), ---- also if you just go to the main repo page, you should see a banner prompting you to create a pull request
-click create pull request
-(optional type a description of changes)
-click create pull request again on this page
-
------------
-editing directly on github
-
-make sure you are editing on MAIN branch (should be default when opening the repo URL -- also says at top of screen in editor)
-switch between edit and preview --- note -- things like ctrl+b for bolding text still work within the markdown code editor on github
-click commit changes.. button when done (or hit ctrl+S)
-click "Create a new branch for this commit and start a pull request" --- any branch name is fine
-optionally add description, click create PR
 
 GitHub Markdown Editor Hotkeys
-==============================
+------------------------------
 
+```
 --- Text Styling ---
 Bold:
   Windows/Linux: Ctrl + B
@@ -70,35 +80,15 @@ Blockquote:
 Toggle Write/Preview:
   Windows/Linux: Ctrl + Shift + P
   Mac:           Cmd + Shift + P
-
-
-
-
-
-## What is Markdown?
-
-Markdown is a lightweight way to format text using plain characters. Instead of clicking a "Bold" button, you type `**bold**`. Instead of inserting a heading from a menu, you type `# My Heading`.
-
-Markdown files end in `.md` and look like plain text when opened in any editor, but render as formatted documents in Obsidian, GitHub, and most documentation sites.
-
-A quick reference:
-
-```
-# Heading 1
-## Heading 2
-
-**bold text**
-*italic text*
-
-- bullet item
-- another item
-
-[link text](https://example.com)
-
-![image alt text](path/to/image.png)
 ```
 
----
+
+
+# Method 2 - Edit Locally with Obsidian (Advanced)
+
+This method requires a more involved setup, but allows you to edit the files like a word processor, **where you can see and edit the formatted document live without having to switch between code and preview.**
+
+
 
 ## Initial Setup
 
@@ -106,23 +96,41 @@ A quick reference:
 
 Obsidian Git relies on the system Git binary to operate. Check whether Git is already installed before continuing.
 
-**Mac:**  
+**Mac:** 
 Git is usually pre-installed. Open **Terminal** (press `Cmd+Space`, type `Terminal`, press Enter) and run:
-```
+
+```bash
 git --version
 ```
 If you see a version number (e.g. `git version 2.39.0`), you are ready. If you see an error or a prompt to install Xcode Command Line Tools, click **Install** and wait for it to finish.
 
-**Windows:**  
-Git is usually not installed by default. Download and run the installer from [git-scm.com/downloads](https://git-scm.com/downloads). (USE ALL DEFAULT)
+**Windows:** 
+Git is usually not installed by default.
+
+1. Download the installer from https://git-scm.com/install/windows
+2. You can **USE ALL DEFAULT OPTIONS** on the installer, just click through all with Next
 
  After installing, you do not need to open Git again — Obsidian will use it automatically.
 
+### Post-install setup for Git
+
+After git is installed, **open a terminal / command line window and run the following commands** (entering in an actual name and email):
+
+```bash
+git config --global user.name "your name"
+git config --global user.email "your-email@whatever.com"
+git config --global push.default upstream
+```
+
+
+
 ---
 
-### Step 2 — Create a GitHub Personal Access Token
+### Step 2 — Create a GitHub Account & Get Personal Access Token
 
-You need this token to authenticate with GitHub.
+**First, create an account on GitHub** if you don't already have one.
+
+**Next, create a Personal Access Token.**  This will be used by the editor plugin to authenticate.
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens)
 2. Click **Generate new token → Generate new token (classic)**
@@ -147,66 +155,50 @@ You need this token to authenticate with GitHub.
 
 1. In Obsidian, open **Settings** (gear icon, bottom-left)
 2. Go to **Community plugins**
-4. Click **Browse**
+3. IF FIRST TIME RUN:
+   1. Under **Restricted Mode**, click **"Turn off and Reload"**
+   2. After reloading you should be able to use community plugins
+4. (Via the same page) Click **Browse**
 5. Search for `Git`
 6. Click **Git** by **Vinzent**, then click **Install**, then **Enable**
 
 ---
 
-### Step 5 — Install the obsidian-github-tools plugin
-
-1. In the same **Community plugins → Browse** screen, search for `GitHub Tools`
-2. Click **Github Repo Tools** by **kwhittle**, then click **Install**, then **Enable**
-
----
-
-### Step 6 — Clone the repository into Obsidian
+### Step 5 — Clone the Wiki repository
 
 1. Open the **Command palette** (press `Ctrl+P` on Windows or `Cmd+P` on Mac)
 2. Type `clone` and select **Obsidian Git: Clone an existing remote repo**
-3. Paste the repository URL followed by `.git`  
-   Example: `https://github.com/your-org/your-repo.git`  
-4. When asked for a path, leave it blank and press Enter (clones into the current vault folder)
+3. **Paste the following URL** -- `https://github.com/your-org/your-repo.git` (TODO: ADD REAL URL)
+4. **When asked for a path, leave it blank** and press Enter (clones into the current vault folder)
+5. **Leave "depth" question blank**
 
-After restarting, all the repository files will appear in the left sidebar.
-
-**(CLICK WIKI FOLDER ON LEFT SIDEBAR)**
+After restarting, all the repository files will appear in the left sidebar. -- **(CLICK FOLDER ON LEFT SIDEBAR TO SEE THE FILES IF YOU DONT SEE ANYTHING)**
 
 ---
 
-### Step 8 — Configure obsidian-github-tools
+After finishing the intial setup, you should be able to edit documents using the next steps.   You should not have to modify any of these settings again unless you need to install this on a new machine.
 
-1. In Obsidian, go to **Settings → Community plugins**, find **GitHub Tools**, and click its **gear icon (UNDER THE THREE DOTS ICON ON RIGHT)**
-2. In the **Local repo path** field, enter the full path to your vault folder  
-   Example: `C:\Users\yourname\Documents\my-project` (Windows) or `/Users/yourname/Documents/my-project` (Mac)  
-   1. **OR CLICK BROWSE**
-   2. **DOCUMENTS -> OBSIDIAN VAULT -> wiki (or whatever project name is)**
-   3. SELECT THE WIKI FOLDER
-3. In the **GitHub personal access token** field, paste your token from Step 2
 
----
+
+
 
 ## Editing Documents
+
 
 ### Step 1 — Create a new branch from main
 
 A branch is your own private workspace. Your changes are kept separate from everyone else's work until you decide to submit them for review.
 
-**Name your branch using your name and today's date**, so it is easy to identify who is working on what.
-
-Format: `firstname-lastname-YYYY-MM-DD`  
-Examples: `jane-smith-2026-08-19`, `alex-jones-2026-11-03`
-
 To create the branch:
 
-1. First, make sure you are starting from the latest version of `main`. Open the **Command palette** (`Ctrl+P` / `Cmd+P`), type `checkout`, and select **Obsidian Git: Switch to remote branch**
+1. First, make sure you are starting from the latest version of `main`. Open the **Command palette** (`Ctrl+P` / `Cmd+P`), type `switch`, and select **Obsidian Git: Switch to remote branch**
    1. Select `origin`
-   2. Select `origin/master` from the list.
+   2. Select `origin/main` from the list.
 2. Open the Command palette again, type `create new branch`, and select **Obsidian Git: Create new branch**
-3. Type your branch name in the format above (e.g. `jane-smith-2026-08-19`) and press Enter
+3. Type a unique branch name **(Can be anything unique, but can just use your name + date -- e.g. `jane-smith-2026-08-19`)** and press Enter
    1. **NOTE -- IT WILL NOT SAY ANYTHING, JUST TYPE THE NAME AFTER SELECTING THE COMMAND**
 
-The branch name now appears in the bottom status bar of Obsidian. You are ready to work.
+**The branch name now appears in the bottom status bar** of Obsidian. You are ready to work.
 
 ---
 
@@ -221,25 +213,25 @@ Use the left sidebar to navigate files. Click any `.md` file to open it.
 
 To toggle, click the THREE DOTS next to the book icon in the top-right corner of the editor, and click SOURCE MODE
 
----
 
-**Push your changes regularly — ideally at least once a day.**
 
-Pushing saves your work to GitHub as a cloud backup. You do not need to be finished to push — push whenever you want to save your progress.
+**After making some edits, push the changes online to GitHub:**
+
+- Push your changes regularly — ideally at least once a day.
+- Pushing saves your work to GitHub as a cloud backup. You do not need to be finished to push — push whenever you want to save your progress.
 
 To push:
 
 1. Click the **source control icon** in the left ribbon (branch/arrows icon) — this opens the Source Control panel --- **GIT SOURCE CONTROL ON FAR LEFT VERTICAL MENU** (TOWARD BOTTOM)
 2. **OPENS A BAR ON THE RIGHT SIDE WITH OPTIONS**
-3. **CLICK THE UP ARROW FOR COMMIT AND SYNC**
-   1. If this is the first time run, it will say **AUTHOR IDENTITY UNKNOWN** and give you some commands to run in the terminal.  run these commands and add your information to git
-4. Click the **Commit-and-sync** button (cloud/upload icon at the top of the panel)
-5. It will prompt you to authenticate with GitHub
-   1. Click Sign In
-   2. Click Use Token
-   3. Paste in your Personal Access Token
+3. Click the **Commit-and-sync** button (cloud/upload icon at the top of the panel) -- **CLICK THE CIRCLE UP ARROW FOR COMMIT AND SYNC**
+4. If prompted, type the name of your branch again in the text box that comes up talking about remote branch name -- (It should prompt you only 1 time each time you create a new branch)
+5. **ON FIRST TIME RUN, it will prompt you to authenticate with GitHub**
+   1. **Click Sign In**
+   2. **Click Use Token**
+   3. **Paste in your Personal Access Token**
 
-Your work is now safely backed up to GitHub on your branch.
+
 
 ---
 
@@ -248,20 +240,17 @@ Your work is now safely backed up to GitHub on your branch.
 When you have finished a section and are ready for it to be reviewed, open a Pull Request (PR). A PR is a request for the maintainer to review your branch and merge it into the main documentation.
 
 1. Make sure you have pushed all your latest changes **(Step 2)**
-2. Click the **GitHub REPO** icon in the left sidebar (the GitHub logo) to open its panel
-   1. **LITTLE CAT ICON ON BOTTOM LEFT**
-3. Click **Create PR**
-4. A modal appears pre-filled with a title based on your branch name — edit the title to briefly describe what this PR contains  
-   Examples: `Jane Smith — Add FAQ section`, `Alex Jones — Update installation guide`
-5. Click **Create** — your browser opens to the GitHub Pull Request page, already filled in
-6. *(Optional)* Add a short description in the text box explaining what you worked on and anything the reviewer should know
-7. Click **Create pull request**
+2. **Go to `https://github.com/xmocxd/wiki-onboarding/compare/(your branch name)`**, ---- also if you just go to the main repo page, you should see a banner prompting you to create a pull request
+3. Click **Create pull request**
+4. *(Optional)* Add a short description in the text box explaining what you worked on and anything the reviewer should know
+5. Click **Create pull request** again on this page
 
-The maintainer will receive a notification and will review, request changes, or approve and merge your work.
 
-Once you have submitted your PR, **do not keep editing on the same branch** — that branch is now under review.
 
-Go back to **Step 1** and create a new branch with today's date to continue working on another section.
+### --- REPEAT STEPS 1-3 as needed to edit ---
+
+- Once you have submitted your PR, **do not keep editing on the same branch** — that branch is now under review.
+- **Go back to Step 1** and create a new branch to continue working on another section.
 
 
 
@@ -271,6 +260,8 @@ Go back to **Step 1** and create a new branch with today's date to continue work
 - If changes are requested, you will get an email notification from GitHub
 - To make edits: switch back to your original branch in Obsidian (Command palette → **Switch to remote branch** → select your branch), make the changes, push, and the PR updates automatically
 - Once merged, your content will be pushed to the live site
+
+
 
 
 
